@@ -1,0 +1,30 @@
+<!-- <form> -->
+<input type="text" placeholder="new Name" [(ngModel)]="newName">
+<input type="text" placeholder="copy name" [value]="newName">
+<form [formGroup]="dataForm" (ngSubmit)="ngData()">
+  <input type="text" Placeholder="Enter Name" formControlName="test1">
+  <button type="submit">submit</button>
+</form>
+
+<!-- <p>{{newName}}</p> -->
+<!-- </form> -->
+
+<h1>Tic-Tac-Toe</h1>
+
+<div class="board">
+  <div *ngFor="let row of board; let i = index" class="row">
+    <div *ngFor="let cell of row; let j = index" class="cell" (click)="makeMove(i, j)">
+      {{ cell }}
+    </div>
+  </div>
+</div>
+
+<div *ngIf="winner" class="result">
+  <h2>Winner: {{ winner }}</h2>
+  <button (click)="resetGame()">Restart</button>
+</div>
+
+<div *ngIf="!winner && isBoardFull()" class="result">
+  <h2>It's a draw!</h2>
+  <button (click)="resetGame()">Restart</button>
+</div>
